@@ -6,6 +6,10 @@ import webbrowser
 import time
 import os
 
+
+
+
+
 def request(links,wait=10):
     for link in links:
         s = requests.Session()

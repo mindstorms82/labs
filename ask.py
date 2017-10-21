@@ -8,8 +8,6 @@ import os
 
 
 
-
-
 def request(links,wait=10):
     for link in links:
         s = requests.Session()
@@ -26,7 +24,6 @@ def browser(links, wait=10):
         os.system("wmctrl -a firefox")
         #subprocess.call(["xdotool", "key" ,"Ctrl+w"])
         os.system("xdotool key Ctrl+w")
-
 
 ebaylist = (
     'https://www.ebay.de/',

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e754a5ee-73c3-47ed-a274-532bd425e555" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/delete.sh" afterPath="$PROJECT_DIR$/delete.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.sh" afterPath="$PROJECT_DIR$/manage.sh" />
     </list>
     <ignored path="git.iws" />
@@ -27,7 +25,7 @@
       <file leaf-file-name="ask.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="-240">
               <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="e#1#16#0" expanded="true" />
@@ -39,8 +37,8 @@
       <file leaf-file-name="manage.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manage.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -129,7 +127,18 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ask.py" />
   </component>
-  <component name="RunManager" selected="Bash.manage.sh">
+  <component name="RunManager" selected="Bash.delete.sh">
+    <configuration default="false" name="manage.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="bash" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/env" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.sh" />
+      <option name="PARAMETERS" value="ebay" />
+      <module name="git" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="false" name="ask" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,12 +156,12 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="manage.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+    <configuration default="false" name="delete.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="bash" />
       <option name="INTERPRETER_PATH" value="/usr/bin/env" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.sh" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/delete.sh" />
       <option name="PARAMETERS" value="" />
       <module name="git" />
       <envs />
@@ -303,14 +312,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Python.ask" />
-      <item index="1" class="java.lang.String" itemvalue="Bash.manage.sh" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Bash.manage.sh" />
+      <item index="1" class="java.lang.String" itemvalue="Python.ask" />
+      <item index="2" class="java.lang.String" itemvalue="Bash.delete.sh" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Bash.manage.sh" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ask" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Bash.delete.sh" />
+        <item index="1" class="java.lang.String" itemvalue="Bash.manage.sh" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ask" />
       </list>
     </recent_temporary>
   </component>
@@ -391,21 +402,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/21_10_2017_13:34:01-_443.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/21_10_2017_16:32:57-ebay_443.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#1#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -419,8 +438,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="120">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
           <folding />
         </state>
       </provider>

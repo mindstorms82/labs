@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-cd /home/yuris82/PycharmProjects/TempLap/
+USER="$(whoami)"
+
 rm -rf *.pcap
 rm -rf *.csv

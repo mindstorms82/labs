@@ -9,7 +9,8 @@ import csv
 def read_csv(file_name):
     with open(file_name, newline='') as csvfile:
         csv_reader = csv.reader(csvfile, delimiter=' ', quotechar=',')
-    return csv_reader
+        for row in csv_reader:
+            print(row)
 
 def sql(file_name):
     cnx = pymysql.connect(host       = config['host'],
@@ -17,10 +18,13 @@ def sql(file_name):
                              password= config['password'],
                              db      = config['db'])
     cursor = cnx.cursor()
-    csv_data = read_csv(file_name)
-    for row in csv_data:
-        list = row[1].values
-        cursor.execute("INSERT INTO table1(frame.number,frame.time,ip.src,ip.dst,tcp.port,frame.len) VALUES('%d','%s','%s','%s','%s','%s','%s')" % tuple(list))
+    with open(file_name, newline='') as csvfile:
+        csv_data = csv.reader(csvfile, delimiter=' ', quotechar=',')
+        for row in csv_data:
+            #row.replace(" ", "")
+            #srow.replace("CEST","")
+            print(row)
+            #cursor.execute("INSERT INTO table1(frame.number,frame.time,ip.src,ip.dst,tcp.port,frame.len) VALUES('%d','%s','%s','%s','%s','%s','%s')" % tuple(list))
     cursor.close()
     cnx.close()
 
@@ -37,8 +41,8 @@ def main(argv):
          sys.exit()
       elif opt in ("-i", "--ifile"):
          inputfile = argv
-   sql(argv)
+   read_csv(argv)
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main(sys.argv[1])
 

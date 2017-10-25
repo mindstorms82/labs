@@ -120,7 +120,7 @@ youtubelist = (
 
 if __name__ == '__main__':
     os.system("firefox &")
-    browser(ebaylist)
+    browser(ebaylist, 20)
     #browser(youtubelist)
     #loggin(facebooklist_login)
     #request(facebooklist)

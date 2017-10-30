@@ -4,9 +4,7 @@ import requests
 #from scapy.all import *
 import webbrowser
 import time
-import os
-
-
+import os, sys, getopt
 
 def request(links,wait=10):
     for link in links:
@@ -20,12 +18,10 @@ def browser(links, wait=20):
     for link in links:
         controller.open(link)
         time.sleep(wait)
-        #subprocess.call(["wmctrl", "-a" ,"firefox"])
         os.system("wmctrl -a firefox")
-        #subprocess.call(["xdotool", "key" ,"Ctrl+w"])
         os.system("xdotool key Ctrl+w")
 
-ebaylist = (
+ebay = (
     'https://www.ebay.de/',
     'https://www.ebay.de/rpp/elektronik-technik',
     'https://www.ebay.de/rpp/zubehoer',
@@ -48,7 +44,7 @@ ebaylist = (
     'http://www.ebay.de/itm/USB-LADEKABEL-Fuer-Tablet-Pc-SAMSUNG-Galaxy-Tab-2-8-9-10-1-GT-P5100-P5110-P5113/161304376180?hash=item258e7d7374%3Ag%3AUs4AAOxyCTtTcV-',
 )
 
-facebooklist=(
+facebook=(
     'https://www.facebook.com/groups/supplyanddemandinuae/',
     'https://www.facebook.com/groups/intbahmonairaqi/',
     'https://www.facebook.com/justgirlyth/videos/1490030817712538/',
@@ -71,7 +67,7 @@ facebooklist=(
     'https://www.facebook.com/Corinka90',
 )
 
-amazonlist = (
+amazon = (
     '',
     '',
     '',
@@ -91,7 +87,7 @@ amazonlist = (
     '',
 )
 
-youtubelist = (
+youtube = (
     'https://www.youtube.com',
     'https://www.youtube.com/watch?v=rQ7tMWOCQlM',
     'https://www.youtube.com/watch?v=FZ_paWpT9Mo',
@@ -113,15 +109,9 @@ youtubelist = (
     #'https://www.youtube.com/watch?v=fRh_vgS2dFE',
 )
 
+db = {'ebay': ebay, 'facebook':facebook, 'youtube': youtube, 'amazon':amazon}
 
-
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     os.system("firefox &")
-    time.sleep(30)
-    browser(ebaylist, 20)
-    #browser(youtubelist)
-    #loggin(facebooklist_login)
-    #request(facebooklist)
+    print(db[sys.argv[1]])
+    browser(db[sys.argv[1]])

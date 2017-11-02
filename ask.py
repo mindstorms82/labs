@@ -110,8 +110,8 @@ youtube = (
 )
 
 db = {'ebay': ebay, 'facebook':facebook, 'youtube': youtube, 'amazon':amazon}
+delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20}
 
 if __name__ == "__main__":
     os.system("firefox &")
-    print(db[sys.argv[1]])
-    browser(db[sys.argv[1]])
+    browser(db[sys.argv[1]], delay[sys.argv[1]])

@@ -45,7 +45,8 @@ def sql(file_name):
         csv_data = csv.reader(csvfile, delimiter=' ', quotechar=',')
         next(csv_data)
         for row in csv_data:
-            row[0] = row[0].replace(',Oct', '')
+            row[0] = row[0].replace(',Nov', '')
+            del(row[1]) #remove
             row[1] = row[1].replace(',','')
             row[4] = row[4].replace('CET,', '')
             elements = row[4].split(",")
@@ -55,7 +56,7 @@ def sql(file_name):
                 i = i + 1
             row = row[:-1] #remove last element
             print(row)
-            row.insert(0, table_name)
+            row.insert(0, "table_name")
             cursor.execute("INSERT INTO `%s` (`frame.number`, `day`, `year`, `frame.time`, `ip.src`, `ip.dst`, `tcp.port`, `frame.len`, `tcp.flags`)  VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)", (row))
             cnx.commit()
     cnx.close()

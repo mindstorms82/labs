@@ -1,5 +1,13 @@
-#NS	CWR	ECE	URG	ACK	PSH	RST	SYN	FIN
-#0	0	0	0	1	0	0	1	0
+#!/usr/bin/python3
+
+import sys, time
+
+
+
+
+
+
+
 
 
 

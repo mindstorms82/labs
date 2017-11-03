@@ -5,6 +5,7 @@ import requests
 import webbrowser
 import time
 import os, sys, getopt
+from random import randint
 
 def request(links,wait=10):
     for link in links:
@@ -20,6 +21,19 @@ def browser(links, wait=20):
         time.sleep(wait)
         os.system("wmctrl -a firefox")
         os.system("xdotool key Ctrl+w")
+
+def mix_browser(po, wait=20):
+    controller = webbrowser.get()
+    for i in range(0,20):
+        time.sleep(wait)
+        weblist = (ebay, facebook, youtube)
+        web_select = weblist[randint(0,2)]
+        link = web_select[randint(0,19)]
+        controller.open(link)
+        if i == randint(0,20):
+            print(i)
+            os.system("wmctrl -a firefox")
+            os.system("xdotool key Ctrl+w")
 
 ebay = (
     'https://www.ebay.de/',
@@ -98,20 +112,24 @@ youtube = (
     'https://www.youtube.com/watch?v=k2qgadSvNyU',
     'https://www.youtube.com/watch?v=tt2k8PGm-TI',
     'https://www.youtube.com/watch?v=ClU3fctbGls',
-    #'https://www.youtube.com/watch?v=yTCDVfMz15M',
-    #'https://www.youtube.com/watch?v=PVjiKRfKpPI',
-    #'https://www.youtube.com/watch?v=TJAfLE39ZZ8',
-    #'https://www.youtube.com/watch?v=DksSPZTZES0',
-    #'https://www.youtube.com/watch?v=QK-Z1K67uaA',
-    #'https://www.youtube.com/watch?v=6JnGBs88sL0',
-    #'https://www.youtube.com/watch?v=y7ZEVA5dy-Y',
-    #'https://www.youtube.com/watch?v=rYEDA3JcQqw',
-    #'https://www.youtube.com/watch?v=fRh_vgS2dFE',
+    'https://www.youtube.com/watch?v=yTCDVfMz15M',
+    'https://www.youtube.com/watch?v=PVjiKRfKpPI',
+    'https://www.youtube.com/watch?v=TJAfLE39ZZ8',
+    'https://www.youtube.com/watch?v=DksSPZTZES0',
+    'https://www.youtube.com/watch?v=QK-Z1K67uaA',
+    'https://www.youtube.com/watch?v=6JnGBs88sL0',
+    'https://www.youtube.com/watch?v=y7ZEVA5dy-Y',
+    'https://www.youtube.com/watch?v=rYEDA3JcQqw',
+    'https://www.youtube.com/watch?v=fRh_vgS2dFE',
 )
+
+
+
 
 db = {'ebay': ebay, 'facebook':facebook, 'youtube': youtube, 'amazon':amazon}
 delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20}
 
 if __name__ == "__main__":
     os.system("firefox &")
-    browser(db[sys.argv[1]], delay[sys.argv[1]])
+    #browser(db[sys.argv[1]], delay[sys.argv[1]])
+    mix_browser(db[sys.argv[1]], delay[sys.argv[1]])

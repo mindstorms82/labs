@@ -127,9 +127,9 @@ youtube = (
 
 
 db = {'ebay': ebay, 'facebook':facebook, 'youtube': youtube, 'amazon':amazon}
-delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20}
+delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20, 'mix':20}
 
 if __name__ == "__main__":
     os.system("firefox &")
     #browser(db[sys.argv[1]], delay[sys.argv[1]])
-    mix_browser(db[sys.argv[1]], delay[sys.argv[1]])
+    mix_browser(sys.argv[1], delay[sys.argv[1]])

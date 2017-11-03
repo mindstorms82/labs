@@ -14,7 +14,7 @@ def read_csv(file_name):
             print(elements)
 
 def find_name(file_name):
-    for table in ["ebay","facebook","youtube","skype"]:
+    for table in ["ebay","facebook","youtube","skype", "mix"]:
         if table in file_name:
             table = re.search('\w+', table).group(0)
             return table

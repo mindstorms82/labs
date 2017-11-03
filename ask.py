@@ -24,13 +24,13 @@ def browser(links, wait=20):
 
 def mix_browser(po, wait=20):
     controller = webbrowser.get()
-    for i in range(0,20):
+    for i in range(0,19):
         time.sleep(wait)
-        weblist = (ebay, facebook, youtube)
-        web_select = weblist[randint(0,2)]
+        weblist = (ebay, facebook, youtube, alexa)
+        web_select = weblist[randint(0,3)]
         link = web_select[randint(0,19)]
         controller.open(link)
-        if i == randint(0,20):
+        if i == randint(0,19):
             print(i)
             os.system("wmctrl -a firefox")
             os.system("xdotool key Ctrl+w")
@@ -123,11 +123,32 @@ youtube = (
     'https://www.youtube.com/watch?v=fRh_vgS2dFE',
 )
 
-
+alexa=(
+    'https://www.google.com',
+    'https://www.amazon.de',
+    'https://www.vk.com',
+    'https://www.Ebay-kleinanzeigen.de',
+    'https://www.web.de',
+    'https://www.gmx.net',
+    'https://www.reddit.com',
+    'https://www.twitter.com',
+    'https://www.instagram.com',
+    'https://www.paypal.com',
+    'https://www.spiegel.de',
+    'https://www.chip.de',
+    'https://www.bing.com',
+    'https://www.bild.de',
+    'https://www.live.com',
+    'https://www.netflix.com',
+    'https://www.otto.de',
+    'https://www.welt.de',
+    'https://www.bahn.de',
+    'https://www.wordpress.com'
+)
 
 
 db = {'ebay': ebay, 'facebook':facebook, 'youtube': youtube, 'amazon':amazon}
-delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20, 'mix':20}
+delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20, 'mix':20, 'alexa':20}
 
 if __name__ == "__main__":
     os.system("firefox &")

@@ -28,7 +28,7 @@ def mix_browser(po, wait=20):
         time.sleep(wait)
         weblist = (ebay, facebook, youtube, alexa)
         web_select = weblist[randint(0,3)]
-        link = web_select[randint(0,19)]
+        link = web_select[randint(0,18)]
         controller.open(link)
         if i == randint(0,19):
             print(i)

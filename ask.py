@@ -152,5 +152,5 @@ delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20, 'mix':20, 'ale
 
 if __name__ == "__main__":
     os.system("firefox &")
-    browser(db[sys.argv[1]], delay[sys.argv[1]])
-    #mix_browser(sys.argv[1], delay[sys.argv[1]])
+    #browser(db[sys.argv[1]], delay[sys.argv[1]])
+    mix_browser(sys.argv[1], delay[sys.argv[1]])

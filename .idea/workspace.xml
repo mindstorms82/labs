@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e754a5ee-73c3-47ed-a274-532bd425e555" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skype.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analyse.py" afterPath="$PROJECT_DIR$/analyse.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ask.py" afterPath="$PROJECT_DIR$/ask.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.sh" afterPath="$PROJECT_DIR$/manage.sh" />
     </list>
@@ -32,8 +30,8 @@
       <file leaf-file-name="ask.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2220">
-              <caret line="154" column="4" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="4" />
+            <state relative-caret-position="738">
+              <caret line="154" column="5" selection-start-line="154" selection-start-column="5" selection-end-line="154" selection-end-column="5" />
               <folding>
                 <element signature="e#1#16#0" expanded="true" />
               </folding>
@@ -41,10 +39,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="analyse.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analyse.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="msql.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/msql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
+            <state relative-caret-position="377">
               <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
               <folding>
                 <element signature="e#20#38#0" expanded="true" />
@@ -65,21 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage.sh" pinned="false" current-in-tab="false">
+      <file leaf-file-name="manage.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manage.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="08_11_2017_20:54:29-ebay_443.csv" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/08_11_2017_20:54:29-ebay_443.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="22255" column="21" selection-start-line="22255" selection-start-column="21" selection-end-line="22255" selection-end-column="21" />
+            <state relative-caret-position="210">
+              <caret line="14" column="210" selection-start-line="14" selection-start-column="210" selection-end-line="14" selection-end-column="210" />
               <folding />
             </state>
           </provider>
@@ -113,10 +111,10 @@
         <option value="$PROJECT_DIR$/msql.py" />
         <option value="$PROJECT_DIR$/chain.py" />
         <option value="$PROJECT_DIR$/analyse.py" />
-        <option value="$PROJECT_DIR$/ask.py" />
         <option value="$PROJECT_DIR$/07_11_2017_13:19:16-ebay_443.csv" />
-        <option value="$PROJECT_DIR$/manage.sh" />
         <option value="$PROJECT_DIR$/08_11_2017_20:54:29-ebay_443.csv" />
+        <option value="$PROJECT_DIR$/ask.py" />
+        <option value="$PROJECT_DIR$/manage.sh" />
       </list>
     </option>
   </component>
@@ -634,42 +632,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/skype.csv" />
-    <entry file="file://$PROJECT_DIR$/msql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
-          <folding>
-            <element signature="e#20#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2220">
-          <caret line="154" column="4" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="4" />
-          <folding>
-            <element signature="e#1#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/07_11_2017_13:19:16-ebay_443.csv" />
     <entry file="file://$PROJECT_DIR$/07_11_2017_13:28:09-ebay_443.csv" />
     <entry file="file://$PROJECT_DIR$/07_11_2017_13:38:18-ebay_443.csv" />
     <entry file="file://$PROJECT_DIR$/07_11_2017_13:40:50-ebay_443.csv" />
     <entry file="file://$PROJECT_DIR$/07_11_2017_13:45:57-ebay_443.csv" />
     <entry file="file://$PROJECT_DIR$/07_11_2017_13:52:14-ebay_443.csv" />
-    <entry file="file://$PROJECT_DIR$/analyse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#20#44#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -696,18 +664,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/07_11_2017_15:08:22-ebay_80.csv" />
     <entry file="file://$PROJECT_DIR$/07_11_2017_15:08:22-ebay_443.csv" />
-    <entry file="file://$PROJECT_DIR$/manage.sh">
+    <entry file="file://$PROJECT_DIR$/08_11_2017_20:54:29-ebay_443.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
+        <state relative-caret-position="13187">
+          <caret line="23120" column="21" selection-start-line="23120" selection-start-column="21" selection-end-line="23120" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/08_11_2017_20:54:29-ebay_443.csv">
+    <entry file="file://$PROJECT_DIR$/msql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="22255" column="21" selection-start-line="22255" selection-start-column="21" selection-end-line="22255" selection-end-column="21" />
+        <state relative-caret-position="377">
+          <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+          <folding>
+            <element signature="e#20#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="154" column="5" selection-start-line="154" selection-start-column="5" selection-end-line="154" selection-end-column="5" />
+          <folding>
+            <element signature="e#1#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="210" selection-start-line="14" selection-start-column="210" selection-end-line="14" selection-end-column="210" />
           <folding />
         </state>
       </provider>

@@ -23,6 +23,7 @@ def mysql_true(cursor, cnx, table_name):
     cursor.execute("SELECT `frame.number`, `frame.len`, `tcp.port` FROM `%s`", (table_name))
     cnx.commit()
     for len in cursor:
+        print(len(cursor))
         if  190 <= len[0] <= 200:
             result.append((len[1]))
     return result
@@ -56,9 +57,9 @@ if __name__ == "__main__":
         print('analyse.py -i <inputfile>')
         sys.exit(2)
     compare(sys.argv[1], sys.argv[2])
-    compare("facebook", sys.argv[2])
-    compare("youtube", sys.argv[2])
-    compare("skype", sys.argv[2])
+    #compare("facebook", sys.argv[2])
+    #compare("youtube", sys.argv[2])
+    #compare("skype", sys.argv[2])
 
 
 

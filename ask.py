@@ -1,40 +1,11 @@
 
 import requests
-#import pyquery
-#from scapy.all import *
 import webbrowser
 import time
 import os, sys, getopt
 from random import randint
 
-def request(links,wait=10):
-    for link in links:
-        s = requests.Session()
-        r = s.get(link)
-        time.sleep(wait)
-        print('Response', r.text)
-
-def browser(links, wait=20):
-    controller = webbrowser.get()
-    for link in links:
-        controller.open(link)
-        time.sleep(wait)
-        os.system("wmctrl -a firefox")
-        os.system("xdotool key Ctrl+w")
-
-def mix_browser(po, wait=20):
-    controller = webbrowser.get()
-    for i in range(0,19):
-        time.sleep(wait)
-        weblist = (ebay, facebook, youtube, alexa)
-        web_select = weblist[randint(0,3)]
-        link = web_select[randint(0,18)]
-        controller.open(link)
-        if i == randint(0,19):
-            print(i)
-            os.system("wmctrl -a firefox")
-            os.system("xdotool key Ctrl+w")
-
+## Global lists ##
 ebay = (
     'https://www.ebay.de/',
     'https://www.ebay.de/rpp/elektronik-technik',
@@ -146,10 +117,48 @@ alexa=(
     'https://www.wordpress.com'
 )
 
-
+## Global Dictionary ##
 db = {'ebay': ebay, 'facebook':facebook, 'youtube': youtube, 'amazon':amazon}
 delay = {'ebay': 20, 'facebook': 20, 'youtube': 40, 'amazon': 20, 'mix':20, 'alexa':20}
 
+## Functions ##
+
+def request(links,wait=10):
+    for link in links:
+        s = requests.Session()
+        r = s.get(link)
+        time.sleep(wait)
+        print('Response', r.text)
+## END Function ##
+
+def browser(links, wait=20):
+    controller = webbrowser.get()
+    for link in links:
+        controller.open(link)
+        time.sleep(wait)
+        os.system("wmctrl -a firefox")
+        os.system("xdotool key Ctrl+w")
+## END Function ##
+
+'''
+Function mix_browser visit all website list defined in youtube, facebook, ebay,
+mix arbitrary to simulate simple user behaviour
+'''
+def mix_browser(po, wait=20):
+    controller = webbrowser.get()
+    for i in range(0,19):
+        time.sleep(wait)
+        weblist = (ebay, facebook, youtube, alexa)
+        web_select = weblist[randint(0,3)]
+        link = web_select[randint(0,18)]
+        controller.open(link)
+        if i == randint(0,19):
+            os.system("wmctrl -a firefox")
+            os.system("xdotool key Ctrl+w")
+## END Function ##
+
+
+## Main Function ##
 if __name__ == "__main__":
     os.system("firefox &")
     #browser(db[sys.argv[1]], delay[sys.argv[1]])

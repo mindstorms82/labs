@@ -1,0 +1,2 @@
+    #cursor.execute("SELECT * FROM `%s` WHERE `frame.len` >= 300", (table_name_true))
+    #cursor.execute("SELECT `frame.len` FROM `%s`", (table_name))

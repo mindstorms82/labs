@@ -1,2 +1,97 @@
     #cursor.execute("SELECT * FROM `%s` WHERE `frame.len` >= 300", (table_name_true))
     #cursor.execute("SELECT `frame.len` FROM `%s`", (table_name))
+
+    cursor.execute("SELECT COUNT(*) FROM `%s`", (table_name))
+    cnx.commit()
+    number_of_rows = cursor.fetchone()[0]
+
+
+
+
+lower_limit= 101, upper_limit= 116
+[66, 74, 74, 74, 66, 74, 66, 260, 266, 74, 74, 66, 1514, 66, 2714]
+
+    Library name:  skype
+
+    0.166666666667
+
+
+Row Nr.:  30023
+Library name:  facebook
+
+0.433333333333
+
+
+Row Nr.:  67184
+Library name:  youtube
+
+0.433333333333
+
+
+Row Nr.:  91438
+Library name:  ebay
+
+0.6
+
+r1
+    #values = [43.3333333333, 60, 16.6666666667, 43.3333333333]
+
+
+--------------------------------------------
+r2
+
+Library name:  facebook
+
+0.466666666667
+alexa
+[1514, 66, 4402, 66, 2962, 66, 2962, 66, 1769, 66, 1514, 4402, 66, 2962, 66]
+
+Library name:  ebay
+
+0.466666666667
+
+
+Test Beobachtung Result 2
+[60, 54, 245, 1514, 54, 1514, 54, 641, 54, 396]
+[30.0, 40.0, 30.0, 30.0]
+
+----------------------------------------------
+r3
+[54, 641, 54, 396]
+Library name:  youtube_lite
+
+[50.0, 75.0, 50.0, 50.0]
+
+----------------------------------------------
+r4
+[66, 2714, 66, 744]
+Library name:  facebook_lite
+
+[66, 2714, 66, 744]
+Library name:  ebay_lite
+
+[66, 2714, 66, 744]
+Library name:  skype
+
+[66, 2714, 66, 744]
+Library name:  youtube_lite
+
+[50.0, 50.0, 100.0, 50.0]
+---------------------------
+r5
+
+[260, 350, 135, 104, 66, 97]
+Library name:  facebook_lite
+
+[260, 350, 135, 104, 66, 97]
+Library name:  ebay_lite
+
+[260, 350, 135, 104, 66, 97]
+Library name:  skype
+
+[260, 350, 135, 104, 66, 97]
+Library name:  youtube_lite
+
+[33.333333333333329, 100.0, 33.333333333333329, 50.0]
+
+

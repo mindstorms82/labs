@@ -12,6 +12,7 @@ def read_csv(file_name):
         for row in csv_reader:
             elements = row[0].split(",")
             print(elements)
+## END Function ##
 
 def find_name(file_name):
     for table in ["ebay","facebook","youtube","skype", "mix", "alexa"]:
@@ -19,6 +20,7 @@ def find_name(file_name):
             table = re.search('\w+', table).group(0)
             return table
     return False
+## END Function ##
 
 def connect_db():
     cnx = pymysql.connect(host       = config['host'],
@@ -27,6 +29,7 @@ def connect_db():
                              db      = config['db'])
     cursor = cnx.cursor()
     return cursor, cnx
+## END Function ##
 
 def create_tables():
     cursor, cnx = connect_db()
@@ -35,7 +38,7 @@ def create_tables():
         table = re.search('\w+', table).group(0)
         cursor.execute('CREATE TABLE IF NOT EXISTS `wireshark`.`%s`(`frame.number` int(4), `day` int(4), `year` int(4), `frame.time` varchar(30), `ip.src` varchar(15), `ip.dst` varchar(15), `tcp.port` int(5), `frame.len` int(4), `tcp.flags` varchar(10)) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci', (table))
         cnx.commit()
-
+## END Function ##
 
 def sql(file_name):
     table_name = find_name(file_name)
@@ -60,6 +63,7 @@ def sql(file_name):
             cursor.execute("INSERT INTO `%s` (`frame.number`, `day`, `year`, `frame.time`, `ip.src`, `ip.dst`, `tcp.port`, `frame.len`, `tcp.flags`)  VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)", (row))
             cnx.commit()
     cnx.close()
+## END Function ##
 
 def main(argv):
    inputfile = ''
@@ -76,7 +80,9 @@ def main(argv):
          inputfile = argv
    #create_tables()
    sql(argv)
+## END Function ##
 
+## Main Function
 if __name__ == "__main__":
     main(sys.argv[1])
 

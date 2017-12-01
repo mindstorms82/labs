@@ -10,8 +10,8 @@ from argparse import *
 
 config = {
     'user': 'wire',
-    'password': '-..360bohbf..-',
-    'host': '192.168.122.60',
+    'password': 'sjdoijwe9r0',
+    'host': '192.168.1.101',
     'db': 'wireshark',
 }
 

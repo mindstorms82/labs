@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-import sys, getopt
-from conf import *
+import sys
+import getopt
+from conf.py import config
 import pymysql.cursors
 import re
 import csv

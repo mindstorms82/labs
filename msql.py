@@ -2,10 +2,12 @@
 
 import sys
 import getopt
-from conf.py import config
 import pymysql.cursors
 import re
 import csv
+
+
+
 
 def read_csv(file_name):
     with open(file_name, newline='') as csvfile:

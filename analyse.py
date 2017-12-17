@@ -3,19 +3,10 @@
 import sys
 import numpy as np
 from sklearn.metrics import jaccard_similarity_score
-from msql.py import connect_db
 import matplotlib.pyplot as plt
 import pymysql.cursors
 from argparse import *
-
-config = {
-    'user': 'wire',
-    'password': 'sjdoijwe9r0',
-    'host': '192.168.1.101',
-    'db': 'wireshark',
-}
-
-
+import plotly as pys
 
 # Global lists #
 
@@ -43,10 +34,18 @@ model_names_debug = (
     'skype_clone'
 )
 
+config = {
+    'user': '',
+    'password': '',
+    'host': '',
+    'db': '',
+}
+
 lower_range = 0
 upper_range = 100
 # Small values are presented with better, the scale 1000 don't effect the comparing process
 scale = 1000
+
 
 def connect_db():
     cnx = pymysql.connect(host=config['host'],
@@ -55,6 +54,7 @@ def connect_db():
                           db=config['db'])
     cursor = cnx.cursor()
     return cursor, cnx
+# END Function #
 
 
 def mysql_pred(cursor, cnx, table_name, lower_limit=lower_range, upper_limit=upper_range):
@@ -126,12 +126,16 @@ def graph_bar(values, plot_name,lower_limit, upper_limit=0):
 # END Function #
 
 
-def graph_pie(values, plot_name):
+def graph_pie(values, plot_name, port_plot=0):
 
     _, ax = plt.subplots()
     ax.grid(True)
+    plot_name = plot_name + " in port " + str(port_plot) if port_plot > 0 else plot_name
     ax.set_title(plot_name)
     shadow_triger = False if 0.0 in values else True
+    for value in values:
+        print(value)
+
     patches, texts, autotexts = ax.pie(values, labels=model_names, autopct='%2.0f%%',
                                        shadow=shadow_triger, startangle=20, radius=1)
     # Equal aspect ratio ensures that pie is drawn as a circle
@@ -144,17 +148,89 @@ def graph_pie(values, plot_name):
 # END Function #
 
 
-def mysql_static_true(cursor, cnx, table_name, val):
-    cursor.execute("SELECT * FROM `%s` WHERE `frame.len` = %s", (table_name, val))
+def graph_pie_advanced(values_443, values_80, plot_name, value):
+    fig = {
+        "data": [
+            {
+                "values": values_443,
+                "labels": model_names,
+                "marker": {"colors": ['rgb(102,102,205)',
+                                      'rgb(255,128,0)',
+                                      'rgb(0,153,76)',
+                                      'rgb(204,0,0)']},
+                "domain": {"x": [0, .48]},
+                "name": "Port 443",
+                "textfont": {"color": ["#bebada", "#bebada", "#bebada", "#bebada"], "size": [22, 25, 26, 27]},
+                "hoverinfo": "label+percent+name",
+                "hole": .5,
+                "type": "pie"
+            },
+            {
+                "values": values_80,
+                "labels": model_names,
+                "marker": {"colors": ['rgb(102,102,205)',
+                                      'rgb(255,128,0)',
+                                      'rgb(0,153,76)',
+                                      'rgb(204,0,0)']},
+                "text": "Port 80",
+                "textposition": "inside",
+                "domain": {"x": [.54, 1]},
+                "name": "Port 80",
+                "hoverinfo": "label+percent+name",
+                "hole": .5,
+                "type": "pie"
+            }],
+        "layout": {
+            "title": plot_name,
+            "annotations": [
+                {
+                    "font": {
+                        "size": 20
+                    },
+                    "showarrow": False,
+                    "text": "Port 443",
+                    "x": 0.20,
+                    "y": 0.5
+                },
+                {
+                    "font": {
+                        "size": 20
+                    },
+                    "showarrow": False,
+                    "text": "Port 80",
+                    "x": 0.8,
+                    "y": 0.5
+                }
+            ]
+        }
+    }
+    #py.plot(fig, filename='donut')
+    local_name = str(value) + "limited.html"
+    pys.offline.plot(fig, filename=local_name)
+# END Function #
+
+
+def mysql_static_true(cursor, cnx, table_name, val, port_mysql=0, flag=None):
+    if port_mysql == 0:
+        cursor.execute("SELECT * FROM `%s` WHERE `frame.len` = %s AND `id` <= 30023", (table_name, val))
+    else:
+        if flag:
+            cursor.execute("SELECT * FROM `%s` WHERE `frame.len` = %s AND `tcp.port` = %s AND `tcp.flags` = %s AND`id` <= 30023",
+                           (table_name, val, port_mysql, flag))
+        else:
+            cursor.execute("SELECT * FROM `%s` WHERE `frame.len` = %s AND `tcp.port` = %s AND`id` <= 30023",
+                           (table_name, val, port_mysql))
     cnx.commit()
     return cursor.rowcount
+# END Function
 
 
-def statistic(cursor, cnx, table_name_true, value):
+def statistic(cursor, cnx, table_name_true, value, port_statistic=0, flag=None):
     maximum = get_maximum_input(cursor, cnx, table_name_true)
-    packet_true = mysql_static_true(cursor, cnx, table_name_true, value)
-    return (packet_true / maximum) * scale
-
+    packet_true = mysql_static_true(cursor, cnx, table_name_true, value, port_statistic, flag)
+    result = (packet_true / maximum)
+    return result * scale
+# END Function #
 
 def mysql_static_pred(cursor, cnx, table_name):
     result = []
@@ -215,17 +291,32 @@ def plot_similar(table_name_internal, lower_limit, upper_limit):
 # END Function #
 
 
-def plot_statistic(value=0, table_name_pred=None):
+def plot_statistic(value=0, port_plot=0, advance=False, flag=None):
     cursor, cnx = connect_db()
     values_internal = []
+    values_443 = []
+    values_80 = []
+    if advance:
+        for table_name_true in model_names:
+                values_443.append(statistic(cursor, cnx, table_name_true, value, 443, flag))
+        for table_name_true in model_names:
+                values_80.append(statistic(cursor, cnx, table_name_true, value, 80, flag))
 
-    for table_name_true in model_names_lite:
-            values_internal.append(statistic(cursor, cnx, table_name_true, value))
+        if all(v == 0 for v in values_443) and all(v == 0 for v in values_80):
+            print("No matches found! \n")
+            return
+        title = 'Packet likelihoods for ' + str(value) + ' Bytes'
+        graph_pie_advanced(values_443, values_80, title, value)
 
-    if all(v == 0 for v in values_internal):
-        print("No matches found! \n")
-        return
-    graph_pie(values_internal, 'Packet Likelihoods')
+
+    else:
+        for table_name_true in model_names_lite:
+                values_internal.append(statistic(cursor, cnx, table_name_true, value, port_plot))
+        if all(v == 0 for v in values_internal):
+            print("No matches found! \n")
+            return
+        title = 'Packet likelihoods for ' + str(value) + ' Bytes'
+        graph_pie(values_internal, title, port_plot)
 # End Function #
 
 
@@ -239,11 +330,19 @@ def usage():
           "Facebook, Skype, Youtube and the user input"
           " ")
     print("\n\n")
+
     print("-s, --single expect \t enter a single packet length <= 5000")
+
+    print("-p, --port \t enter port number 443 or 80 are only available in this tool\n")
+
     print("-r, --range \t enter a range of packet ids, for instance "
-          "90 100, this means the tool will fetch 10 packet length"
+          "90,100. This means the tool will fetch 10 packet length"
           "from the database, fetch the packet length starting from "
           "the entry id 90 to 100\n")
+
+    print("-d, --debug \t enter the debug mode will activate a lite "
+          "weight table for making quick test and response\n")
+
     print(">>>>Use this tool on your own risk<<<<")
 # End Function #
 
@@ -251,10 +350,14 @@ def usage():
 # MainFunction #
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument('-s', '--single', help="Enter a single packet length", type=int)
-    parser.add_argument('-r', '--range', help="Enter a range of packet lengths, for instance 90 100", type=str)
+    parser.add_argument('-s', '--single',  help="Enter a single packet length", type=int)
+    parser.add_argument('-f', '--flag',  help="Enter a flag in Hex format", type=str)
+    parser.add_argument('-p', '--port',    help="Enter port number in search", type=int)
+    parser.add_argument('-a', '--advance', action='store_true', help="Adding this option will display separated charts")
+    parser.add_argument('-r', '--range',   help="Enter a range of packet lengths, for instance 90 100", type=str)
     parser.add_argument('-v', '--verbose', help="This parameter is deactivated, only available for developers")
-    parser.add_argument('-d', '--debug', action='store_true', help="Enter Debug mode for fast black box test")
+    parser.add_argument('-d', '--debug',   action='store_true', help="Enter Debug mode for fast black box test")
+    parser.add_argument('-i', '--information', action='store_true', help="Print more information about the tool")
     args = parser.parse_args()
 
     # Enter debug mode if -d is active else switch to normal mode
@@ -265,18 +368,17 @@ if __name__ == "__main__":
     if args.verbose:
         verbose = True
     elif args.single:
-        plot_statistic(value=args.single)
+        port_args = args.port if args.port else 0
+        advance = True if args.advance else False
+        plot_statistic(value=args.single, port_plot=port_args, advance=advance, flag=args.flag)
     elif args.range:
         my_list = [int(item) for item in args.range.split(',')]
         lower_input = my_list[0] if my_list[0] < my_list[1] else my_list[1]
         upper_input = my_list[1] if my_list[0] < my_list[1] else my_list[0]
         plot_similar(table_name, lower_input, upper_input)
-    else:
-        print("unhandled option \n")
+    elif args.information:
+        usage()
         sys.exit()
-
-    # compare(sys.argv[1], sys.argv[2])
-    # plot_similar()
-
-
-
+    else:
+        print("Unhandled option \n")
+        sys.exit()
